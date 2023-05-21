@@ -1,6 +1,11 @@
+.dayOfWeek {
+  padding: 0.5rem 0.75rem;
+  color: var(--primary-text-color);
+}
 .intro {
   padding: 0.5rem 0.75rem;
   margin: 0;
+  color: var(--primary-text-color);
 }
 .taskList {
   display: flex;
@@ -24,7 +29,7 @@
 
     .taskName {
       font-size: 14px;
-      color: #666;
+      color: var(--primary-text-color);
     }
   }
 }
