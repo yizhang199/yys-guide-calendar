@@ -1,15 +1,17 @@
 .app {
   padding: 1rem;
-  width: 100%;
+  width: min(100%,548px);
   height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   overflow: auto;
   position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.app::before {
+/* .app::before {
   content: '';
   position: absolute;
   top: 0;
@@ -21,20 +23,19 @@
   z-index: -1;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
-.calendar {
-  width: max(70%, 1280px);
-  max-height: 100%;
-  overflow: hidden;
+.days-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  overflow: auto;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   grid-template-rows: auto;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
 }
 
-.calendar .week-header {
+.days-grid .week-header {
   align-self: center;
   justify-self: center;
   width: 100%;
@@ -43,7 +44,7 @@
   text-align: center;
 }
 
-.calendar .day-cell {
+.days-grid .day-cell {
   height: 100%;
   width: 100%;
 }
