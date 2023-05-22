@@ -17,6 +17,12 @@ function DayCell({ data }) {
   const now = new Date();
   const isToday = now.getDate() === startDate.getDate();
 
+  const handleOnOpenDetailClick = (e) => {
+    e.preventDefault();
+
+
+  }
+
   return (
     <div className={styles.dayCell}>
       <div className={styles.header}>

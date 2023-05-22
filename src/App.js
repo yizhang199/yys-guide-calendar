@@ -1,6 +1,6 @@
 import './App.css';
 import Guides from './data/guides.json';
-import DayCell from './components/DayCell';
+import DayCell from './components/DayCell/DayCell';
 
 function App() {
 
