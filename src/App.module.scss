@@ -1,0 +1,99 @@
+.app {
+  padding: 1rem;
+  width: 100%;
+  max-width: 728px;
+  height: 100%;
+  /* display: flex; */
+  align-items: center;
+  justify-content: flex-start;
+  overflow: auto;
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+
+  .navigation {
+    width: 100%;
+    padding: 0.25rem;
+    padding-right: 100%;
+    overflow-x: auto;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+    }
+    .navButton {
+      background-color: var(--grey-background-color);
+      color: var(--secondary-text-color);
+      border: 1px solid transparent;
+      border-radius: 0.5rem;
+      height: 4rem;
+      width: 3rem;
+      display: flex;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      filter: drop-shadow(0 0 2px var(--grey-background-color));
+      cursor: pointer;
+      span, small {
+        white-space: nowrap;
+        pointer-events: none;
+      }
+
+      span {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      &.active {
+        background-color: var(--base-color);
+        color: #fff;
+        filter: drop-shadow(0 0 2px var(--base-color));
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-active {
+}
+
+/* .app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./static/background.jpg);
+  opacity: 0.75;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.daysGrid {
+  width: 100%;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-rows: auto;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+}
+
+.daysGrid .day-cell {
+  height: 100%;
+  width: 100%;
+}
