@@ -7,19 +7,10 @@ const dateString = '24 May, 2023, 00:00:00';
 function DayCell({ data, day }) {
   if (!data) return null;
 
-  const { intro, tasks, goals } = data;
+  const { goals } = data;
 
   const startDate = new Date(Date.parse(dateString));
   startDate.setDate(startDate.getDate() + day - 1);
-
-  const dayOfWeek = startDate.toLocaleString('zh', { weekday: 'long' });
-
-  const now = new Date();
-  const isToday = now.getDate() === startDate.getDate();
-
-  const handleOnOpenDetailClick = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <div className={styles.dayCell}>
