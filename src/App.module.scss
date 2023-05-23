@@ -15,16 +15,16 @@
   .navigation {
     width: 100%;
     padding: 0.25rem;
-    padding-right: 100%;
+    padding-right: 10%;
     overflow-x: auto;
-    height: max-content;
+    height: 5rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
     gap: 0.5rem;
     &::-webkit-scrollbar {
-      background-color: transparent;
+      display: none;
     }
     .navButton {
       background-color: var(--grey-background-color);
@@ -39,7 +39,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      filter: drop-shadow(0 0 2px var(--grey-background-color));
+      box-shadow: 0 0 2px var(--grey-background-color);
       cursor: pointer;
       span, small {
         white-space: nowrap;
@@ -54,7 +54,7 @@
       &.active {
         background-color: var(--base-color);
         color: #fff;
-        filter: drop-shadow(0 0 2px var(--base-color));
+        box-shadow: 0 0 2px var(--base-color);
       }
     }
   }
