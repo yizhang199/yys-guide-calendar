@@ -40,8 +40,13 @@ function App() {
     setActiveDay(Number(day) || 1);
   };
 
+  const numberOfGoals = Guides[activeDay]?.goals?.length || 0;
+
   return (
     <div className={styles.app}>
+      <div className={styles.header}>
+        共 <b>{numberOfGoals}</b> 目标需要完成
+      </div>
       <div className={styles.navigation} ref={navigationRef}>
         {Array.from({ length: 15 }).map((_, index) => {
           const startDate = new Date(Date.parse(dateString));

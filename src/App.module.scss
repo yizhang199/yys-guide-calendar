@@ -12,6 +12,16 @@
   border-right: 1px solid rgba(0, 0, 0, 0.5);
   flex-direction: column;
 
+  .header {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-text-color);
+    b {
+      color: var(--base-color);
+    }
+  }
+
   .navigation {
     width: 100%;
     padding: 0.25rem;

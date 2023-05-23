@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 import styles from './DayCell.module.scss';
 
 const dateString = '24 May, 2023, 00:00:00';
@@ -7,7 +7,7 @@ const dateString = '24 May, 2023, 00:00:00';
 function DayCell({ data, day }) {
   if (!data) return null;
 
-  const { intro, tasks} = data;
+  const { intro, tasks, goals } = data;
 
   const startDate = new Date(Date.parse(dateString));
   startDate.setDate(startDate.getDate() + day - 1);
@@ -19,25 +19,21 @@ function DayCell({ data, day }) {
 
   const handleOnOpenDetailClick = (e) => {
     e.preventDefault();
-
-
-  }
+  };
 
   return (
     <div className={styles.dayCell}>
-      <div className={styles.header}>
-        <span>{dayOfWeek}</span>
-        <small>{`Day ${day.toString().padStart(2,'0')}`}</small>
-      </div>
-      <h4 className={styles.intro}>{intro}</h4>
-      <div className={styles.taskList}>
-        {tasks.map((task) => (
-          <div className={styles.task} key={task}>
-            <input type="checkbox" />
-            <span className={styles.taskName}>{task}</span>
+      <div className={styles.goalList}>
+        {goals?.map((task) => (
+          <div className={styles.goal} key={task}>
+            <span className={styles.indicator}></span>
+            <span className={styles.goalName}>{task}</span>
           </div>
         ))}
       </div>
+      <NavLink className={styles.goToDetailLink} to={`detail/${day}`}>
+        详细流程
+      </NavLink>
     </div>
   );
 }
