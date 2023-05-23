@@ -1,5 +1,36 @@
-.taskList {
+.detail {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5rem;
+  position: relative;
+  .navigation {
+    width: 3rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5rem;
+    height: max-content;
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    a {
+      writing-mode: vertical-rl;
+      text-decoration: none;
+      color: var(--base-color);
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: 1px solid;
+      &:hover {
+        background-color: var(--base-color);
+        color: #fff;
+      }
+    }
+  }
+}
+.taskList {
+  flex: 1;
   padding: 1rem;
   .task {
     width: 100%;
