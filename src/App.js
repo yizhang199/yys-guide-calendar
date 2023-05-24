@@ -20,21 +20,21 @@ function App() {
     // Convert the difference to days
     const diffInDays = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
-    return diffInDays + 1;
+    return diffInDays;
   });
 
   const handleNavButtonClick = (event) => {
     event.preventDefault();
 
     const { day } = event.target.dataset;
-    if(Number(day) === activeDay) return;
+    if (Number(day) === activeDay) return;
 
     const container = navigationRef.current;
     const scrollLeft = event.target.offsetLeft - container.offsetLeft - 80;
 
     container.scrollTo({
       left: scrollLeft,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
 
     setActiveDay(Number(day) || 1);
@@ -60,7 +60,9 @@ function App() {
             <button
               key={`nav-button-${index}`}
               data-day={index + 1}
-              className={classNames(styles.navButton, {[styles.active]: index + 1 === activeDay})}
+              className={classNames(styles.navButton, {
+                [styles.active]: index + 1 === activeDay,
+              })}
               onClick={handleNavButtonClick}
             >
               <small>{dayOfWeek}</small>
@@ -69,7 +71,7 @@ function App() {
           );
         })}
       </div>
-      <DayCell data={Guides[activeDay]} day={activeDay}/>
+      <DayCell data={Guides[activeDay]} day={activeDay} />
     </div>
   );
 }
