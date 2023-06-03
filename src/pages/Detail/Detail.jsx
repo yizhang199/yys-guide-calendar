@@ -31,9 +31,9 @@ function Detail() {
         })}
       </div>
       <div className={styles.navigation}>
-        <NavLink to="secrets">秘闻副本</NavLink>
-        <NavLink to="gear">御魂副本</NavLink>
-        <NavLink to="gear">师徒副本</NavLink>
+        <NavLink to="/secrets">秘闻副本</NavLink>
+        <NavLink to="/soul">御魂副本</NavLink>
+        {/* <NavLink to="/gear">师徒副本</NavLink> */}
       </div>
     </div>
   );
