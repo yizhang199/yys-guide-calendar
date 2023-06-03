@@ -54,12 +54,17 @@ function Secrets() {
 export default Secrets;
 
 function Secret({ data }) {
-  const { name, instances } = data;
+  const { name, instances, imageName } = data;
 
   return (
     <div>
-      <div>{name}</div>
-      <div>
+      <div className={styles.secretCard}>
+        <div className={styles.name}>{name}</div>
+        {imageName && (
+          <img className={styles.avatar} src={`avatar/${imageName}`} alt="" />
+        )}
+      </div>
+      <div className={styles.list}>
         {instances.map((instance) => {
           return <div key={instance.name}>{instance.name}</div>;
         })}

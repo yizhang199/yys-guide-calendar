@@ -257,6 +257,7 @@ export const information = [
   },
   {
     name: '红叶的羁绊',
+    imageName: 'guinvhongye.png',
     instances: [
       {
         level: 1,
