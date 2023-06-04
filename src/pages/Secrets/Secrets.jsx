@@ -57,12 +57,17 @@ function Secrets() {
 export default Secrets;
 
 function Secret({ data, difficulty }) {
-  const { name, instances, imageName } = data;
+  const { name, instances, imageName, imageAlt } = data;
 
   return (
     <div className={styles.secretCard}>
       <div className={styles.name}>{name}</div>
-      <img className={styles.avatar} src={`avatar/${imageName}`} alt="" />
+      <img
+        className={styles.avatar}
+        src={`avatar/${imageName}`}
+        alt=""
+        data-alt={imageAlt}
+      />
       <span className={styles.info}>可攻略层数: {instances.length}</span>
       <NavLink
         className={styles.navLink}

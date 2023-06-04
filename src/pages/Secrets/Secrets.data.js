@@ -192,6 +192,7 @@ export const RewardType = {
 export const information = [
   {
     name: '山兔大暴走',
+    imageAlt: '山兔',
     instances: [
       {
         level: 1,
@@ -258,6 +259,7 @@ export const information = [
   {
     name: '红叶的羁绊',
     imageName: 'guinvhongye.png',
+    imageAlt: '红叶',
     instances: [
       {
         level: 1,
@@ -323,6 +325,7 @@ export const information = [
   },
   {
     name: '妖刀之秘籍',
+    imageAlt: '妖刀',
     instances: [
       {
         level: 1,
@@ -388,6 +391,7 @@ export const information = [
   },
   {
     name: '河畔童谣',
+    imageAlt: '河童',
     instances: [
       {
         level: 1,
@@ -453,6 +457,7 @@ export const information = [
   },
   {
     name: '雨女的等候',
+    imageAlt: '雨女',
     instances: [
       {
         level: 1,
