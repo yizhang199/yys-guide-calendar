@@ -177,16 +177,16 @@ export const difficulties = [
 ];
 
 export const RewardType = {
-  gold: 'gold',
-  jades: 'jades',
-  ticket: 'challenge ticket',
-  avatarFrame: 'avatar frame',
-  costume: 'costume',
-  blackDharma: 'Black Dharma Egg',
-  blueDharma: 'Blue Dharma Egg',
-  redDharma: 'Red Dharma Egg',
-  twoStarWhiteDharma: '2 star White Dharma',
-  fourStarWhiteDharma: '4 star White Dharma',
+  gold: '金币',
+  jades: '勾玉',
+  ticket: '神秘的符咒',
+  avatarFrame: '头像框',
+  costume: '皮肤',
+  blackDharma: '御行达摩',
+  blueDharma: '大吉达摩',
+  redDharma: '招福达摩',
+  twoStarWhiteDharma: '两星奉为达摩',
+  fourStarWhiteDharma: '四星奉为达摩',
 };
 
 export const information = [
@@ -332,6 +332,7 @@ export const information = [
         name: '妖刀·壹式',
         rewardType: RewardType.gold,
         rewardAmount: 10000,
+        description: '同行式神待霄姑获鸟随便打',
       },
       {
         level: 2,

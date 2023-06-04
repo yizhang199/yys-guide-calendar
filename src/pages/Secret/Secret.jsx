@@ -26,11 +26,18 @@ function Secret() {
 
   return (
     <div className={listClasses}>
-      <NavLink to="/secrets">X</NavLink>
+      <NavLink to="/secrets" className={styles.closeBtn}>
+        X
+      </NavLink>
       {filteredInstances?.map((instance) => {
         return (
           <div className={styles.listItem} key={instance.name}>
-            {instance.name}
+            <input type="checkbox" />
+            <span className={styles.name}>{instance.name}</span>
+            <span className={styles.reward}>
+              {instance.rewardType} * {instance.rewardAmount}
+            </span>
+            <span className={styles.description}>{instance.description}</span>
           </div>
         );
       })}
