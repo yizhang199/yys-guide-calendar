@@ -22,10 +22,7 @@ function Secret() {
 
   const cx = classNames.bind(styles);
 
-  const listClasses = cx(
-    { isOpen: !!difficulty, isClose: !difficulty },
-    styles.instanceList
-  );
+  const listClasses = cx({ isOpen: !!difficulty }, styles.instanceList);
 
   return (
     <div className={listClasses}>
