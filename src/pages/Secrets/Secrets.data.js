@@ -196,6 +196,7 @@ export const information = [
   {
     name: '山兔大暴走',
     imageAlt: '山兔',
+    imageName: 'yamausagi.png',
     instances: [
       {
         level: 1,
@@ -261,7 +262,7 @@ export const information = [
   },
   {
     name: '红叶的羁绊',
-    imageName: 'guinvhongye.png',
+    imageName: 'momiji.png',
     imageAlt: '红叶',
     instances: [
       {
