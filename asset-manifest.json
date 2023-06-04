@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/yys-guide-calendar/static/css/main.517acb36.css",
-    "main.js": "/yys-guide-calendar/static/js/main.5e20f366.js",
+    "main.css": "/yys-guide-calendar/static/css/main.bf73c2ef.css",
+    "main.js": "/yys-guide-calendar/static/js/main.ce15ad0b.js",
     "index.html": "/yys-guide-calendar/index.html",
-    "main.517acb36.css.map": "/yys-guide-calendar/static/css/main.517acb36.css.map",
-    "main.5e20f366.js.map": "/yys-guide-calendar/static/js/main.5e20f366.js.map"
+    "main.bf73c2ef.css.map": "/yys-guide-calendar/static/css/main.bf73c2ef.css.map",
+    "main.ce15ad0b.js.map": "/yys-guide-calendar/static/js/main.ce15ad0b.js.map"
   },
   "entrypoints": [
-    "static/css/main.517acb36.css",
-    "static/js/main.5e20f366.js"
+    "static/css/main.bf73c2ef.css",
+    "static/js/main.ce15ad0b.js"
   ]
 }
