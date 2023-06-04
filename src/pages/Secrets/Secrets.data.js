@@ -330,6 +330,7 @@ export const information = [
   {
     name: '妖刀之秘籍',
     imageAlt: '妖刀',
+    imageName: 'yoto-hime.png',
     instances: [
       {
         level: 1,
