@@ -5,6 +5,7 @@ import App from './App';
 import Detail from './pages/Detail/Detail';
 import Secrets from './pages/Secrets/Secrets';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Secret from './pages/Secret/Secret';
 
 const router = createBrowserRouter(
   [
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
     {
       path: 'secrets',
       element: <Secrets />,
+    },
+    {
+      path: 'secret/:name',
+      element: <Secret />,
     },
   ],
   { basename: '/yys-guide-calendar' }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { difficulties, information } from './Secrets.data';
 import styles from './Secrets.module.scss';
 
@@ -30,7 +31,7 @@ function Secrets() {
   };
 
   return (
-    <div>
+    <div className={styles.page}>
       <div>
         <button data-type="beginnerLevel" onClick={handleOnButtonClick}>
           Beginner
@@ -42,9 +43,11 @@ function Secrets() {
           Expert
         </button>
       </div>
-      <div className={styles.list}>
+      <div className={styles.grid}>
         {filteredData.map((data) => {
-          return <Secret data={data} key={data.name} />;
+          return (
+            <Secret data={data} difficulty={difficultyLevel} key={data.name} />
+          );
         })}
       </div>
     </div>
@@ -53,22 +56,20 @@ function Secrets() {
 
 export default Secrets;
 
-function Secret({ data }) {
+function Secret({ data, difficulty }) {
   const { name, instances, imageName } = data;
 
   return (
-    <div>
-      <div className={styles.secretCard}>
-        <div className={styles.name}>{name}</div>
-        {imageName && (
-          <img className={styles.avatar} src={`avatar/${imageName}`} alt="" />
-        )}
-      </div>
-      <div className={styles.list}>
-        {instances.map((instance) => {
-          return <div key={instance.name}>{instance.name}</div>;
-        })}
-      </div>
+    <div className={styles.secretCard}>
+      <div className={styles.name}>{name}</div>
+      <img className={styles.avatar} src={`avatar/${imageName}`} alt="" />
+      <span className={styles.info}>可攻略层数: {instances.length}</span>
+      <NavLink
+        className={styles.navLink}
+        to={`/secret/${name}?difficulty=${difficulty}`}
+      >
+        明细 <span className={styles.arrow}></span>
+      </NavLink>
     </div>
   );
 }
