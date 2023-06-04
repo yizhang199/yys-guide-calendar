@@ -398,6 +398,7 @@ export const information = [
   {
     name: '河畔童谣',
     imageAlt: '河童',
+    imageName: 'kappa.png',
     instances: [
       {
         level: 1,
@@ -464,6 +465,7 @@ export const information = [
   {
     name: '雨女的等候',
     imageAlt: '雨女',
+    imageName: 'ame-onna.png',
     instances: [
       {
         level: 1,
@@ -530,6 +532,7 @@ export const information = [
   {
     name: '荒川之怒',
     imageAlt: '荒川',
+    imageName: 'lord-arakawa.png',
     instances: [
       {
         level: 1,
