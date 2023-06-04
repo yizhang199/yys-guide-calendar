@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import classNames from 'classnames/bind';
 import { difficulties, information } from './Secrets.data';
 import styles from './Secrets.module.scss';
 
 function Secrets() {
   const [difficultyLevel, setDifficultyLevel] = useState('beginnerLevel');
+
+  const { name } = useParams();
 
   const filteredData = information
     .map((data) => {
@@ -30,9 +33,18 @@ function Secrets() {
     setDifficultyLevel(dataset.type);
   };
 
+  const cx = classNames.bind(styles);
+  const transitionContainerClasses = cx(
+    {
+      isOpen: !!name,
+      isClose: !name,
+    },
+    styles.transitionContainer
+  );
+
   return (
     <div className={styles.page}>
-      <div>
+      {/* <div>
         <button data-type="beginnerLevel" onClick={handleOnButtonClick}>
           Beginner
         </button>
@@ -42,13 +54,16 @@ function Secrets() {
         <button data-type="expertLevel" onClick={handleOnButtonClick}>
           Expert
         </button>
-      </div>
+      </div> */}
       <div className={styles.grid}>
         {filteredData.map((data) => {
           return (
             <Secret data={data} difficulty={difficultyLevel} key={data.name} />
           );
         })}
+      </div>
+      <div className={transitionContainerClasses}>
+        <Outlet />
       </div>
     </div>
   );
@@ -71,7 +86,7 @@ function Secret({ data, difficulty }) {
       <span className={styles.info}>可攻略层数: {instances.length}</span>
       <NavLink
         className={styles.navLink}
-        to={`/secret/${name}?difficulty=${difficulty}`}
+        to={`/secrets/${name}?difficulty=${difficulty}`}
       >
         明细 <span className={styles.arrow}></span>
       </NavLink>

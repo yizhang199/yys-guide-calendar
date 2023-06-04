@@ -20,10 +20,12 @@ const router = createBrowserRouter(
     {
       path: '/secrets',
       element: <Secrets />,
-    },
-    {
-      path: '/secret/:name',
-      element: <Secret />,
+      children: [
+        {
+          path: ':name',
+          element: <Secret />,
+        },
+      ],
     },
   ],
   { basename: '/yys-guide-calendar' }
