@@ -599,6 +599,7 @@ export const information = [
   {
     name: '暴风之巅',
     imageAlt: '大天狗',
+    imageName: 'ootengu.png',
     instances: [
       {
         level: 1,
@@ -663,8 +664,76 @@ export const information = [
     ],
   },
   {
+    name: '伞剑的守护',
+    imageAlt: '姑获鸟',
+    imageName: 'ubume.png',
+    instances: [
+      {
+        level: 1,
+        name: '壹·鹤笠',
+        rewardType: RewardType.gold,
+        rewardAmount: 10000,
+      },
+      {
+        level: 2,
+        name: '贰·伞护',
+        rewardType: RewardType.jades,
+        rewardAmount: 50,
+      },
+      {
+        level: 3,
+        name: '叁·执剑',
+        rewardType: RewardType.gold,
+        rewardAmount: 50000,
+      },
+      {
+        level: 4,
+        name: '肆·怜子',
+        rewardType: RewardType.jades,
+        rewardAmount: 100,
+      },
+      {
+        level: 5,
+        name: '伍·养育',
+        rewardType: RewardType.gold,
+        rewardAmount: 100000,
+      },
+      {
+        level: 6,
+        name: '陆·陪伴',
+        rewardType: RewardType.ticket,
+        rewardAmount: 1,
+      },
+      {
+        level: 7,
+        name: '柒·远行',
+        rewardType: RewardType.blueDharma,
+        rewardAmount: 1,
+      },
+      {
+        level: 8,
+        name: '捌·牵挂',
+        rewardType: RewardType.fourStarWhiteDharma,
+        rewardAmount: 1,
+      },
+      {
+        level: 9,
+        name: '玖·怀情',
+        rewardType: RewardType.blackDharma,
+        rewardAmount: 1,
+      },
+      {
+        level: 10,
+        name: '拾·慈心',
+        rewardType: RewardType.costume,
+        rewardAmount: 1,
+      },
+    ],
+  },
+  {
     name: '夏之风物诗',
     imageAlt: '镰鼬',
+    imageName: 'kamaitachi.png',
     instances: [
       {
         level: 1,
@@ -731,6 +800,7 @@ export const information = [
   {
     name: '意志的觉醒',
     imageAlt: '小鹿男',
+    imageName: 'shishio.png',
     instances: [
       {
         level: 1,
@@ -797,6 +867,7 @@ export const information = [
   {
     name: '海怪的温柔',
     imageAlt: '海坊主',
+    imageName: 'umibozu.png',
     instances: [
       {
         level: 1,
@@ -863,6 +934,7 @@ export const information = [
   {
     name: '青灯百物语',
     imageAlt: '青行灯',
+    imageName: 'aoadon.png',
     instances: [
       {
         level: 1,
@@ -929,6 +1001,7 @@ export const information = [
   {
     name: '鲜血之月',
     imageAlt: '吸血姬',
+    imageName: 'vampira.png',
     instances: [
       {
         level: 1,
@@ -995,6 +1068,7 @@ export const information = [
   {
     name: '狐生百魅',
     imageAlt: '妖狐',
+    imageName: 'youko.png',
     instances: [
       {
         level: 1,
@@ -1061,6 +1135,7 @@ export const information = [
   {
     name: '黄泉彼岸',
     imageAlt: '彼岸花',
+    imageName: 'higanbana.png',
     instances: [
       {
         level: 1,
@@ -1133,6 +1208,7 @@ export const information = [
   {
     name: '道成夙怨',
     imageAlt: '清姬',
+    imageName: 'kiyohime.png',
     instances: [
       {
         level: 1,
@@ -1205,6 +1281,7 @@ export const information = [
   {
     name: '雪之回忆',
     imageAlt: '雪童子',
+    imageName: 'yuki.png',
     instances: [
       {
         level: 1,
@@ -1277,6 +1354,7 @@ export const information = [
   {
     name: '征服世界',
     imageAlt: '金鱼姬',
+    imageName: 'kingyo.png',
     instances: [
       {
         level: 1,
@@ -1349,6 +1427,7 @@ export const information = [
   {
     name: '呱士无双',
     imageAlt: '青蛙瓷器',
+    imageName: 'jikikaeru.png',
     instances: [
       {
         level: 1,
@@ -1421,6 +1500,7 @@ export const information = [
   {
     name: '安梦奇缘',
     imageAlt: '食梦貘',
+    imageName: 'yumikui.png',
     instances: [
       {
         level: 1,
@@ -1493,6 +1573,7 @@ export const information = [
   {
     name: '浪客远道',
     imageAlt: '犬神',
+    imageName: 'inugami.png',
     instances: [
       {
         level: 1,
@@ -1565,6 +1646,7 @@ export const information = [
   {
     name: '山巅之禁',
     imageAlt: '一目连',
+    imageName: 'ichimokuren.png',
     instances: [
       {
         level: 1,
@@ -1637,6 +1719,7 @@ export const information = [
   {
     name: '夜雪无声',
     imageAlt: '雪女',
+    imageName: 'yuki-onna.png',
     instances: [
       {
         level: 1,
@@ -1709,6 +1792,7 @@ export const information = [
   {
     name: '骁武浪升',
     imageAlt: '骁浪荒川',
+    imageName: 'sp-arakawa.png',
     instances: [
       {
         level: 1,
@@ -1781,6 +1865,7 @@ export const information = [
   {
     name: '烽火寄请',
     imageAlt: '小袖之手',
+    imageName: 'kosodenote.png',
     instances: [
       {
         level: 1,
@@ -1853,6 +1938,7 @@ export const information = [
   {
     name: '逐路之争',
     imageAlt: '孟婆',
+    imageName: 'mouba.png',
     instances: [
       {
         level: 1,
@@ -1925,6 +2011,7 @@ export const information = [
   {
     name: '盛宴终刻',
     imageAlt: '海忍',
+    imageName: 'kaininn.png',
     instances: [
       {
         level: 1,
@@ -1997,6 +2084,7 @@ export const information = [
   {
     name: '拾花旧忆',
     imageAlt: '傀儡师',
+    imageName: 'puppeteer.png',
     instances: [
       {
         level: 1,
@@ -2069,6 +2157,7 @@ export const information = [
   {
     name: '流萤之夏',
     imageAlt: '虫师',
+    imageName: 'mushishi.png',
     instances: [
       {
         level: 1,
@@ -2134,72 +2223,6 @@ export const information = [
         level: 11,
         name: '番外·梦醒',
         rewardType: RewardType.ticket,
-        rewardAmount: 1,
-      },
-    ],
-  },
-  {
-    name: '伞剑的守护',
-    imageAlt: '姑获鸟',
-    instances: [
-      {
-        level: 1,
-        name: '壹·鹤立',
-        rewardType: RewardType.gold,
-        rewardAmount: 10000,
-      },
-      {
-        level: 2,
-        name: '贰·伞护',
-        rewardType: RewardType.jades,
-        rewardAmount: 50,
-      },
-      {
-        level: 3,
-        name: '叁·执剑',
-        rewardType: RewardType.gold,
-        rewardAmount: 50000,
-      },
-      {
-        level: 4,
-        name: '肆·怜子',
-        rewardType: RewardType.jades,
-        rewardAmount: 100,
-      },
-      {
-        level: 5,
-        name: '伍·养育',
-        rewardType: RewardType.gold,
-        rewardAmount: 100000,
-      },
-      {
-        level: 6,
-        name: '陆·陪伴',
-        rewardType: RewardType.ticket,
-        rewardAmount: 1,
-      },
-      {
-        level: 7,
-        name: '柒·远行',
-        rewardType: RewardType.blueDharma,
-        rewardAmount: 1,
-      },
-      {
-        level: 8,
-        name: '捌·牵挂',
-        rewardType: RewardType.fourStarWhiteDharma,
-        rewardAmount: 1,
-      },
-      {
-        level: 9,
-        name: '玖·怀情',
-        rewardType: RewardType.blackDharma,
-        rewardAmount: 1,
-      },
-      {
-        level: 10,
-        name: '拾·慈心',
-        rewardType: RewardType.costume,
         rewardAmount: 1,
       },
     ],
