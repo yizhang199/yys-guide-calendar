@@ -203,6 +203,7 @@ export const information = [
         name: '开心的山兔',
         rewardType: RewardType.gold,
         rewardAmount: 10000,
+        requirements: [['同行待霄姑获鸟']],
       },
       {
         level: 2,
@@ -270,18 +271,24 @@ export const information = [
         name: '壹·邂逅',
         rewardType: RewardType.gold,
         rewardAmount: 10000,
+        description: '同行待霄姑获鸟随便打',
+        requirements: [['同行待霄姑获鸟']],
       },
       {
         level: 2,
         name: '贰·别离',
         rewardType: RewardType.jades,
         rewardAmount: 50,
+        description: '同行待霄姑获鸟随便打',
+        requirements: [['同行待霄姑获鸟']],
       },
       {
         level: 3,
         name: '叁·暮想',
         rewardType: RewardType.gold,
         rewardAmount: 50000,
+        description: '同行待霄姑获鸟随便打',
+        requirements: [['同行待霄姑获鸟']],
       },
       {
         level: 4,
