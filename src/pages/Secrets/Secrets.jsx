@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { information } from './Secrets.data';
+import store from 'store2';
 import { useHeros } from './useHeros.js';
 
 import styles from './Secrets.module.scss';
@@ -15,18 +16,24 @@ function Secrets() {
     .map((data) => {
       return {
         ...data,
-        instances: data.instances.filter((instance) => {
-          if (!instance.requirements) return false;
+        instances: data.instances
+          .filter((instance) => {
+            const arr = store.get(data.name) || [];
 
-          return instance.requirements.some((heroSet) =>
-            heroSet.every(
-              (hero) =>
-                heros
-                  .filter((h) => h.obtained)
-                  .findIndex((h) => h.id === hero.id) >= 0
-            )
-          );
-        }),
+            return !arr.includes(instance.level);
+          })
+          .filter((instance) => {
+            if (!instance.requirements) return false;
+
+            return instance.requirements.some((heroSet) =>
+              heroSet.every(
+                (hero) =>
+                  heros
+                    .filter((h) => h.obtained)
+                    .findIndex((h) => h.id === hero.id) >= 0
+              )
+            );
+          }),
       };
     })
     .filter((data) => data?.instances?.length > 0);

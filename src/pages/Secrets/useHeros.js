@@ -5,7 +5,9 @@ import store from 'store2';
 function useHeros() {
   const [heros, setHeros] = useState(() => {
     const heroIds = store.get('heros');
+
     const herosArr = Object.values(Heros);
+
     if (!Array.isArray(heroIds))
       return herosArr.map((hero) => ({ ...hero, obtained: false }));
 
