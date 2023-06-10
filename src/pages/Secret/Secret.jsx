@@ -3,9 +3,10 @@ import { useParams, useSearchParams, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import store from 'store2';
 
-import { information, difficulties } from '../Secrets/Secrets.data';
+import { information } from '../Secrets/Secrets.data';
 
 import styles from './Secret.module.scss';
+import { useHeros } from '../Secrets/useHeros';
 
 function Secret() {
   const { name } = useParams();
@@ -15,13 +16,19 @@ function Secret() {
 
   const { instances } = information.find((secret) => secret.name === name);
 
-  const difficultyData = difficulties.find((elem) => elem.name === name);
+  const { heros } = useHeros();
 
-  const maxLevel = difficultyData[difficulty];
+  const filteredInstances = instances?.filter((instance) => {
+    if (!instance.requirements) return false;
 
-  const filteredInstances = instances?.filter(
-    (instance) => instance.level <= maxLevel && !instance.isDone
-  );
+    return instance.requirements.some((heroSet) =>
+      heroSet.every(
+        (hero) =>
+          heros.filter((h) => h.obtained).findIndex((h) => h.id === hero.id) >=
+          0
+      )
+    );
+  });
 
   const cx = classNames.bind(styles);
 

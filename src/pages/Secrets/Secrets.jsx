@@ -1,37 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { difficulties, information } from './Secrets.data';
+import { information } from './Secrets.data';
+import { useHeros } from './useHeros.js';
+
 import styles from './Secrets.module.scss';
 
 function Secrets() {
-  const [difficultyLevel, setDifficultyLevel] = useState('beginnerLevel');
-
   const { name } = useParams();
+
+  const { heros, addHero, removeHero } = useHeros();
 
   const filteredData = information
     .map((data) => {
       return {
         ...data,
         instances: data.instances.filter((instance) => {
-          const difficulty = difficulties.find(
-            (elem) => elem.name === data.name
+          if (!instance.requirements) return false;
+
+          return instance.requirements.some((heroSet) =>
+            heroSet.every(
+              (hero) =>
+                heros
+                  .filter((h) => h.obtained)
+                  .findIndex((h) => h.id === hero.id) >= 0
+            )
           );
-          if (!difficulty) return false;
-          return instance.level <= difficulty[difficultyLevel];
         }),
       };
     })
     .filter((data) => data?.instances?.length > 0);
-
-  const handleOnButtonClick = (event) => {
-    event.preventDefault();
-
-    const { dataset } = event.target;
-    if (!dataset?.type) return;
-
-    setDifficultyLevel(dataset.type);
-  };
 
   const cx = classNames.bind(styles);
   const transitionContainerClasses = cx(
@@ -42,23 +40,42 @@ function Secrets() {
     styles.transitionContainer
   );
 
+  const handleOnHeroChange = (evt) => {
+    const { checked } = evt.target;
+    const { hero } = evt.target.dataset;
+
+    if (!hero) return;
+
+    if (checked) {
+      addHero(Number(hero));
+    } else {
+      removeHero(Number(hero));
+    }
+  };
+
   return (
     <div className={styles.page}>
-      {/* <div>
-        <button data-type="beginnerLevel" onClick={handleOnButtonClick}>
-          Beginner
-        </button>
-        <button data-type="intermediateLevel" onClick={handleOnButtonClick}>
-          Intermediate
-        </button>
-        <button data-type="expertLevel" onClick={handleOnButtonClick}>
-          Expert
-        </button>
-      </div> */}
+      <div className={styles.heroGroup}>
+        {heros.map((hero) => (
+          <div key={hero.name} className={styles.hero}>
+            <input
+              type="checkbox"
+              checked={hero.obtained}
+              data-hero={hero.id}
+              onChange={handleOnHeroChange}
+            />
+            <span>{hero.name}</span>
+          </div>
+        ))}
+      </div>
       <div className={styles.grid}>
         {filteredData.map((data) => {
           return (
-            <Secret data={data} difficulty={difficultyLevel} key={data.name} />
+            <Secret
+              data={data}
+              obtainedHeros={heros.filter((hero) => hero.obtained)}
+              key={data.name}
+            />
           );
         })}
       </div>
@@ -71,7 +88,7 @@ function Secrets() {
 
 export default Secrets;
 
-function Secret({ data, difficulty }) {
+function Secret({ data, obtainedHeros }) {
   const { name, instances, imageName, imageAlt } = data;
 
   return (
@@ -86,7 +103,9 @@ function Secret({ data, difficulty }) {
       <span className={styles.info}>可攻略层数: {instances.length}</span>
       <NavLink
         className={styles.navLink}
-        to={`/secrets/${name}?difficulty=${difficulty}`}
+        to={`/secrets/${name}?obtained=${obtainedHeros
+          .map((hero) => hero.id)
+          .join(',')}`}
       >
         明细 <span className={styles.arrow}></span>
       </NavLink>
