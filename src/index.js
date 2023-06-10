@@ -6,24 +6,30 @@ import Detail from './pages/Detail/Detail';
 import Secrets from './pages/Secrets/Secrets';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Secret from './pages/Secret/Secret';
+import Layout from './components/Layout/Layout';
 
 const router = createBrowserRouter(
   [
     {
-      path: '/',
-      element: <App />,
-    },
-    {
-      path: '/detail/:day',
-      element: <Detail />,
-    },
-    {
-      path: '/secrets',
-      element: <Secrets />,
+      element: <Layout />,
       children: [
         {
-          path: ':name',
-          element: <Secret />,
+          path: '/',
+          element: <App />,
+        },
+        {
+          path: 'detail/:day',
+          element: <Detail />,
+        },
+        {
+          path: 'secrets',
+          element: <Secrets />,
+          children: [
+            {
+              path: ':name',
+              element: <Secret />,
+            },
+          ],
         },
       ],
     },

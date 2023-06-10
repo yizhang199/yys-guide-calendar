@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Guides from '../../data/guides.json';
 import styles from './Detail.module.scss';
 
@@ -29,11 +29,6 @@ function Detail() {
             </div>
           );
         })}
-      </div>
-      <div className={styles.navigation}>
-        <NavLink to="/secrets">秘闻副本</NavLink>
-        <NavLink to="/soul">御魂副本</NavLink>
-        {/* <NavLink to="/gear">师徒副本</NavLink> */}
       </div>
     </div>
   );

@@ -20,6 +20,8 @@ function App() {
     // Convert the difference to days
     const diffInDays = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
+    if (diffInDays > 15) return 1;
+
     return diffInDays;
   });
 
