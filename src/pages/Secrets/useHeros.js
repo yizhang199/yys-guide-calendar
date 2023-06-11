@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heros } from '../../data/heros';
+import { Heros } from 'data/heros';
 import store from 'store2';
 
 function useHeros() {

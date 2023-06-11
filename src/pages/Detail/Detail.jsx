@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Guides from '../../data/guides.json';
+import Guides from 'data/guides.json';
 import styles from './Detail.module.scss';
 
 function Detail() {

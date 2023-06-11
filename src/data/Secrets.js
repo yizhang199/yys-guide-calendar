@@ -1,4 +1,4 @@
-import { presets } from 'data/presets';
+import { presets } from './presets';
 
 export const RewardType = {
   gold: '金币',

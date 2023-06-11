@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { information } from './Secrets.data';
+import { information } from 'data/Secrets.js';
 import store from 'store2';
 import { useHeros } from './useHeros.js';
 
