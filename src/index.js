@@ -36,7 +36,7 @@ const router = createBrowserRouter(
           ],
         },
         {
-          path: 'heros',
+          path: 'heroes',
           element: <Heros />,
         },
       ],

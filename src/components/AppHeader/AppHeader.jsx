@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 import styles from './AppHeader.module.scss';
 
 const navButtons = [
-  { label: '每日目标', to: '/' },
-  { label: '秘闻副本', to: '/secrets' },
-  { label: '式神养成', to: '/heros' },
+  { label: '日历', to: '/' },
+  { label: '式神', to: '/heroes' },
+  { label: '秘闻', to: '/secrets' },
 ];
 
 function AppHeader() {

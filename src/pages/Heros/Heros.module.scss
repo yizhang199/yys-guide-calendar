@@ -1,38 +1,104 @@
 @import 'scss/_variables.scss';
 
-.selectedHeros {
-  width: 100%;
+.heros {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 0.75rem 1rem;
-  .selectedHero {
-    height: 3.75rem;
-    width: 3.75rem;
-    img {
-      height: 100%;
-      width: 100%;
-      filter: drop-shadow(0px 0px 5px transparentize($base-color, 0.5));
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 5rem;
+
+  .selectedHeros {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    .selectedHero {
+      height: 3.75rem;
+      width: 3.75rem;
+      img {
+        height: 100%;
+        width: 100%;
+        filter: drop-shadow(0px 0px 5px transparentize($base-color, 0.5));
+      }
     }
   }
-}
 
-.heroGroup {
-  width: 100%;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  grid-template-rows: max-content;
-  height: max-content;
-  .hero {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+  .heroGroup {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-rows: max-content;
+    height: max-content;
 
-    span {
-      white-space: nowrap;
+    .heroCard {
+      display: grid;
+      gap: 0.25rem 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      grid-template-columns: max-content 1fr;
+      grid-template-rows: auto;
+
+      &.selected {
+        box-shadow: inset 0 0 0.5rem rgba($color: $base-color, $alpha: 0.7);
+        img {
+          filter: drop-shadow(0 0 0.25rem $base-color);
+        }
+      }
+
+      img {
+        height: 5rem;
+        width: 5rem;
+        grid-row: 1/5;
+        grid-column: 1/2;
+        align-self: flex-start;
+        margin-top: 0.5rem;
+      }
+
+      span {
+        white-space: normal;
+        &.name {
+          font-weight: bold;
+          font-size: 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: $primary-text-color;
+          &.selected {
+            color: $base-color;
+            b {
+              color: $primary-text-color;
+            }
+          }
+        }
+
+        &.source {
+          font-size: 0.875rem;
+        }
+
+        &.soul {
+          font-size: 0.875rem;
+        }
+
+        &.speed {
+          font-size: 0.875rem;
+        }
+      }
+
+      .footer {
+        grid-row: 5/6;
+        grid-column: 1/3;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        button {
+          padding: 0.5rem 1rem;
+          border: 1px solid $base-color;
+          border-radius: 0.25rem;
+          background-color: #fff;
+          color: $base-color;
+        }
+      }
     }
   }
 }
