@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .detail {
   width: 100%;
   display: flex;
@@ -18,12 +20,12 @@
     a {
       writing-mode: vertical-rl;
       text-decoration: none;
-      color: var(--base-color);
+      color: $base-color;
       padding: 0.5rem;
       border-radius: 0.25rem;
       border: 1px solid;
       &:hover {
-        background-color: var(--base-color);
+        background-color: $base-color;
         color: #fff;
       }
     }
@@ -62,7 +64,7 @@
       grid-column: 2/3;
       grid-row: 2/3;
       font-size: 0.75rem;
-      color: var(--secondary-text-color);
+      color: $secondary-text-color;
     }
   }
 }

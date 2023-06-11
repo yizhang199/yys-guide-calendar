@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .appHeader {
   height: 5rem;
   width: 100%;
@@ -6,7 +8,7 @@
   justify-content: flex-start;
   .navLink {
     text-decoration: none;
-    color: var(--base-color);
+    color: $base-color;
     padding: 0.6875rem 2.75rem;
     border-radius: 0.25rem;
     &.active {
