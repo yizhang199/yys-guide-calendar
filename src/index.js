@@ -7,6 +7,7 @@ import Secrets from './pages/Secrets/Secrets';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Secret from './pages/Secret/Secret';
 import Layout from './components/Layout/Layout';
+import HeroContextProvider from 'contexts/HeroContext';
 
 const router = createBrowserRouter(
   [
@@ -40,6 +41,8 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HeroContextProvider>
+      <RouterProvider router={router} />
+    </HeroContextProvider>
   </React.StrictMode>
 );

@@ -3,7 +3,7 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { information } from 'data/Secrets.js';
 import store from 'store2';
-import { useHeros } from './useHeros.js';
+import { useHeros } from 'contexts/HeroContext';
 
 import styles from './Secrets.module.scss';
 
