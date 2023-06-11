@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useSearchParams, NavLink } from 'react-router-dom';
+import React from 'react';
+import { useParams, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import store from 'store2';
 
 import { useHeros } from 'contexts/HeroContext';
-import { information } from 'data/Secrets';
+import { useSecrets } from 'contexts/SecretContext';
 
 import styles from './Secret.module.scss';
 
 function Secret() {
   const { name } = useParams();
 
-  const [search] = useSearchParams();
-  const difficulty = search.get('difficulty');
+  const { secrets, toggleInstance } = useSecrets();
 
-  const { instances } = information.find((secret) => secret.name === name);
+  const { instances } = secrets.find((secret) => secret.name === name);
 
   const { heros } = useHeros();
 
@@ -32,7 +30,7 @@ function Secret() {
 
   const cx = classNames.bind(styles);
 
-  const listClasses = cx({ isOpen: !!difficulty }, styles.instanceList);
+  const listClasses = cx(styles.instanceList);
 
   return (
     <div className={listClasses}>
@@ -40,38 +38,27 @@ function Secret() {
         X
       </NavLink>
       {filteredInstances?.map((instance) => {
-        return <Instance instance={instance} name={name} key={instance.name} />;
+        return (
+          <Instance
+            instance={instance}
+            name={name}
+            key={instance.name}
+            toggleInstance={toggleInstance}
+          />
+        );
       })}
     </div>
   );
 }
 
-function Instance({ instance, name }) {
-  const [isDone, setDone] = useState(false);
+function Instance({ instance, name, toggleInstance }) {
+  const { isDone } = instance;
 
   const handleOnCheck = (event) => {
     const { checked } = event.target;
-    const arr = store.get(name) || [];
 
-    if (checked) {
-      store.set(name, [...arr, instance.level]);
-    } else {
-      store.set(
-        name,
-        arr.filter((elem) => elem !== instance.level)
-      );
-    }
-
-    setDone(checked);
+    toggleInstance(name, instance.level, checked);
   };
-
-  useEffect(() => {
-    const arr = store.get(name) || [];
-
-    if (arr.includes(instance.level) !== isDone) {
-      setDone(!isDone);
-    }
-  }, [name]);
 
   return (
     <div className={styles.listItem} key={instance.name}>

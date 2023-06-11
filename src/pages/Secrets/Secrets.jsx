@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { information } from 'data/Secrets.js';
-import store from 'store2';
 import { useHeros } from 'contexts/HeroContext';
+import { useSecrets } from 'contexts/SecretContext';
 
 import styles from './Secrets.module.scss';
 
@@ -11,29 +10,27 @@ function Secrets() {
   const { name } = useParams();
 
   const { heros, addHero, removeHero } = useHeros();
+  const { secrets } = useSecrets();
 
-  const filteredData = information
+  const filteredData = secrets
     .map((data) => {
       return {
         ...data,
-        instances: data.instances
-          .filter((instance) => {
-            const arr = store.get(data.name) || [];
+        instances: data.instances.filter((instance) => {
+          if (!instance.requirements) return false;
 
-            return !arr.includes(instance.level);
-          })
-          .filter((instance) => {
-            if (!instance.requirements) return false;
-
-            return instance.requirements.some((heroSet) =>
+          return (
+            !instance.isDone &&
+            instance.requirements.some((heroSet) =>
               heroSet.every(
                 (hero) =>
                   heros
                     .filter((h) => h.obtained)
                     .findIndex((h) => h.id === hero.id) >= 0
               )
-            );
-          }),
+            )
+          );
+        }),
       };
     })
     .filter((data) => data?.instances?.length > 0);
