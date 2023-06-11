@@ -60,20 +60,44 @@ function Secrets() {
     }
   };
 
+  const handleOnSelectedHeroClick = (evt) => {
+    const { hero } = evt.target.dataset;
+
+    if (!hero) return;
+
+    removeHero(Number(hero));
+  };
+
   return (
     <div className={styles.page}>
+      <div className={styles.selectedHeros}>
+        {heros
+          .filter((hero) => hero.obtained)
+          .map((hero) => (
+            <div key={hero.name} className={styles.selectedHero}>
+              <img
+                data-hero={hero.id}
+                onClick={handleOnSelectedHeroClick}
+                src={`heros/${hero.imgUrl}`}
+                alt={hero.name}
+              />
+            </div>
+          ))}
+      </div>
       <div className={styles.heroGroup}>
-        {heros.map((hero) => (
-          <div key={hero.name} className={styles.hero}>
-            <input
-              type="checkbox"
-              checked={hero.obtained}
-              data-hero={hero.id}
-              onChange={handleOnHeroChange}
-            />
-            <span>{hero.name}</span>
-          </div>
-        ))}
+        {heros
+          .filter((hero) => !hero.obtained)
+          .map((hero) => (
+            <div key={hero.name} className={styles.hero}>
+              <input
+                type="checkbox"
+                checked={hero.obtained}
+                data-hero={hero.id}
+                onChange={handleOnHeroChange}
+              />
+              <span>{hero.name}</span>
+            </div>
+          ))}
       </div>
       <div className={styles.grid}>
         {filteredData.map((data) => {
