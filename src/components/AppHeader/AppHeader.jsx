@@ -3,15 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './AppHeader.module.scss';
 
-const navs = [
-  { label: '日历', to: '/' },
-  { label: '秘闻', to: '/secrets' },
+const navButtons = [
+  { label: '每日目标', to: '/' },
+  { label: '秘闻副本', to: '/secrets' },
+  { label: '式神养成', to: '/heros' },
 ];
 
 function AppHeader() {
   return (
     <div className={styles.appHeader}>
-      {navs.map((nav) => (
+      {navButtons.map((nav) => (
         <NavLink
           key={nav.label}
           className={({ isActive, isPending }) =>

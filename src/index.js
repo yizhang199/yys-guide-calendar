@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import Detail from './pages/Detail/Detail';
-import Secrets from './pages/Secrets/Secrets';
+import Detail from 'pages/Detail/Detail';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Secret from './pages/Secret/Secret';
-import Layout from './components/Layout/Layout';
+import App from './App';
+import Heros from 'pages/Heros/Heros';
+import Secret from 'pages/Secret/Secret';
+import Secrets from 'pages/Secrets/Secrets';
+import Layout from 'components/Layout/Layout';
 import HeroContextProvider from 'contexts/HeroContext';
 import SecretContextProvider from 'contexts/SecretContext';
+
+import './index.css';
 
 const router = createBrowserRouter(
   [
@@ -32,6 +34,10 @@ const router = createBrowserRouter(
               element: <Secret />,
             },
           ],
+        },
+        {
+          path: 'heros',
+          element: <Heros />,
         },
       ],
     },
