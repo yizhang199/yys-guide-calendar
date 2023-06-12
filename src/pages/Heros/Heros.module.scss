@@ -30,6 +30,7 @@
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-template-rows: max-content;
     height: max-content;
+    padding: 0 0.5rem;
 
     .heroCard {
       display: grid;
