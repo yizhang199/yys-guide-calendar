@@ -2,20 +2,23 @@
 
 .appHeader {
   height: 5rem;
-  width: 100%;
+  width: calc(100% - 2rem);
+  margin: 1rem auto 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding: 1rem 1rem 1rem 4.375rem;
+  gap: 1rem;
+  background-image: url('./star.png');
+  background-position: 10px;
+  background-repeat: no-repeat;
+  background-size: 50px;
   .navLink {
     text-decoration: none;
-    color: $base-color;
-    padding: 0.6875rem 2.75rem;
-    border-radius: 0.25rem;
+    color: $secondary-text-color;
     &.active {
-      background: #fff;
-      box-shadow: 0 2px 25px rgba(33, 33, 33, 0.15);
-      color: #000;
       font-weight: 600;
+      color: $primary-text-color;
     }
   }
 }
