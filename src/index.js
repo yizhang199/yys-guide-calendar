@@ -10,7 +10,7 @@ import Layout from 'components/Layout/Layout';
 import HeroContextProvider from 'contexts/HeroContext';
 import SecretContextProvider from 'contexts/SecretContext';
 
-import './index.css';
+import './index.scss';
 
 const router = createBrowserRouter(
   [

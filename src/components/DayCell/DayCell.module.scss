@@ -60,7 +60,7 @@
     border-radius: 0.25rem;
     -webkit-user-select: none;
     user-select: none;
-    background-color: transparentize($base-color, 0.85);
+    background-color: $card-background-color;
 
     // &:hover {
     //   box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.25);
