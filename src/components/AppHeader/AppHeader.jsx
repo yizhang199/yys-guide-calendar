@@ -23,7 +23,7 @@ function AppHeader() {
           }
           to={nav.to}
         >
-          {nav.label}
+          {nav.label} <i className="icons">gouyu</i>
         </NavLink>
       ))}
     </Card>

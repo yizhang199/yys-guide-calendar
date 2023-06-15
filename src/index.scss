@@ -34,3 +34,22 @@ body {
   align-items: flex-start;
   overflow: auto;
 }
+
+@font-face {
+  font-family: 'uiw-font';
+  src: url('../font/uiw-font.eot'); /* IE9*/
+  src: url('../font/uiw-font.woff') format('woff2'),
+    url('../font/uiw-font.woff2') format('woff'),
+    url('../font/uiw-font.ttf') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+      url('../font/uiw-font.svg') format('svg'); /* iOS 4.1- */
+}
+
+.icons {
+  font-family: 'uiw-font' !important;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

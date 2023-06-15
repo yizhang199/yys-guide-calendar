@@ -22,7 +22,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "font": "svgtofont --sources ./svg --output ./font --fontName uiw-font"
+  },
+  "svgtofont": {
+    "generateInfoData": true,
+    "useNameAsUnicode": true,
+    "css": {
+      "fontSize": "12px"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +52,7 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
-    "node-sass": "^7.0.3"
+    "node-sass": "^7.0.3",
+    "svgtofont": "^3.25.4"
   }
 }
