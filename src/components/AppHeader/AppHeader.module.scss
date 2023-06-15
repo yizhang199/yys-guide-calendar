@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 1rem 1rem 1rem 4.375rem;
-  gap: 1rem;
+  gap: 2rem;
   background-image: url('./star.png');
   background-position: 10px;
   background-repeat: no-repeat;
@@ -16,6 +16,10 @@
   .navLink {
     text-decoration: none;
     color: $secondary-text-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
     &.active {
       font-weight: 600;
       color: $primary-text-color;
