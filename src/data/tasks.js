@@ -94,7 +94,7 @@ export const Tasks = [
     id: 4,
     title: '町中玩一场百鬼夜行',
     description:
-      '重点砸N卡或R卡,目的是为了尽量多砸碎片，解锁对应成就.前三次必中,可以先调成一个豆子砸三次,再拉满继续砸',
+      '完成小白的任务，同时可以完成多个成就。重点砸N卡或R卡,目的是为了尽量多砸碎片，完成对应成就。前三次必中,可以先调成一个豆子砸三次,再拉满继续砸',
     requirements: '',
     plannedCompletionDay: 1,
   },
@@ -176,6 +176,7 @@ export const Tasks = [
     title: '解锁SP姑姑',
     description: '',
     requirements: '',
+    relatedHeroes: [1],
     plannedCompletionDay: 1,
   },
   {
@@ -184,6 +185,7 @@ export const Tasks = [
     description:
       '阵容使用SP姑姑+座敷+各种狗粮.狗粮优先蓝蛋13级,其他各种狗粮20级.如果有铁鼠也可以觉醒以后带上一个.',
     plannedCompletionDay: 1,
+    relatedInstances: [],
   },
   {
     id: 17,
@@ -205,7 +207,7 @@ export const Tasks = [
     id: 19,
     title: '打活动',
     description:
-      '阵容使用SP姑姑+座敷，十三章以后可以加入兔子，姑姑和兔子妖术，剩下的普攻',
+      '去网上找攻略，一般情况下第一阶段的阵容都是双兔子+座敷+丑女/铁鼠+借的输出式神',
     plannedCompletionDay: 1,
   },
   {
@@ -326,3 +328,5 @@ export const tasksByDay = {
     goals: Goals[15],
   },
 };
+
+export const dailyTasks = [];
