@@ -71,7 +71,8 @@ const Goals = {
   15: ['领最后一直送的SSR/SP,最终确定自己的斗技体系', '神龛兑换式神'],
 };
 
-export const Tasks = [
+// those tasks are one time task, it will be used to create the agenda for the first two weeks calendar guide
+export const tasks = [
   {
     id: 1,
     title: '先跟着系统提示跑新手教程,完成以后会弹出跳过剧情对话框,点击跳过剧情',
@@ -269,7 +270,7 @@ export const Tasks = [
 export const tasksByDay = {
   1: {
     goals: Goals[1],
-    tasks: Tasks[1],
+    tasks: tasks[1],
   },
   2: {
     goals: Goals[2],
@@ -329,4 +330,10 @@ export const tasksByDay = {
   },
 };
 
+// need to be completed every day
+// localStorage record structure: dailyTaskCompleteDateTime: {[id:number]:{ completedAt:'xxx', dueAt:'xxx', startAt: 'xxx'}}
 export const dailyTasks = [];
+
+// need to be completed every week
+// localStorage record structure: weeklyTaskCompleteDateTime: {[id:number]:{ completedAt:'xxx', dueAt:'xxx', startAt: 'xxx'}}
+export const weeklyTasks = [];
