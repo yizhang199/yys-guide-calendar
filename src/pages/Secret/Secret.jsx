@@ -32,10 +32,6 @@ function Secret() {
     );
   });
 
-  const filteredInstances = instances?.filter(
-    (instance) => !blockedInstance || instance.level < blockedInstance?.level
-  );
-
   const cx = classNames.bind(styles);
 
   const listClasses = cx(styles.instanceList);
@@ -45,7 +41,7 @@ function Secret() {
       <NavLink to="/secrets" className={styles.closeBtn}>
         X
       </NavLink>
-      {filteredInstances?.map((instance) => {
+      {instances?.map((instance) => {
         return (
           <Instance
             instance={instance}
@@ -69,7 +65,11 @@ function Instance({ instance, name, toggleInstance }) {
   };
 
   return (
-    <div className={styles.listItem} key={instance.name}>
+    <div
+      className={styles.listItem}
+      key={instance.name}
+      style={{ opacity: instance.enable ? 1 : 0.3 }}
+    >
       <input type="checkbox" onChange={handleOnCheck} checked={isDone} />
       <span className={styles.name}>{instance.name}</span>
       <span className={styles.reward}>
