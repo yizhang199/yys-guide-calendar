@@ -16,17 +16,25 @@ function Secret() {
 
   const { heros } = useHeros();
 
-  const filteredInstances = instances?.filter((instance) => {
+  const blockedInstance = instances?.find((instance) => {
     if (!instance.requirements) return false;
 
-    return instance.requirements.some((heroSet) =>
-      heroSet.every(
-        (hero) =>
-          heros.filter((h) => h.obtained).findIndex((h) => h.id === hero.id) >=
-          0
+    return (
+      !instance.isDone &&
+      !instance.requirements.some((heroSet) =>
+        heroSet.every(
+          (hero) =>
+            heros
+              .filter((h) => h.obtained)
+              .findIndex((h) => h.id === hero.id) >= 0
+        )
       )
     );
   });
+
+  const filteredInstances = instances?.filter(
+    (instance) => !blockedInstance || instance.level < blockedInstance?.level
+  );
 
   const cx = classNames.bind(styles);
 

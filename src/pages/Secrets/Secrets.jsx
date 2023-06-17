@@ -14,23 +14,28 @@ function Secrets() {
 
   const filteredData = secrets
     .map((data) => {
+      const blockedInstance = data.instances.find((instance) => {
+        if (!instance.requirements) return false;
+
+        return (
+          !instance.isDone &&
+          !instance.requirements.some((heroSet) =>
+            heroSet.every(
+              (hero) =>
+                heros
+                  .filter((h) => h.obtained)
+                  .findIndex((h) => h.id === hero.id) >= 0
+            )
+          )
+        );
+      });
+
       return {
         ...data,
-        instances: data.instances.filter((instance) => {
-          if (!instance.requirements) return false;
-
-          return (
-            !instance.isDone &&
-            instance.requirements.some((heroSet) =>
-              heroSet.every(
-                (hero) =>
-                  heros
-                    .filter((h) => h.obtained)
-                    .findIndex((h) => h.id === hero.id) >= 0
-              )
-            )
-          );
-        }),
+        instances: data.instances.filter(
+          (instance) =>
+            !blockedInstance || instance.level < blockedInstance?.level
+        ),
       };
     })
     .filter((data) => data?.instances?.length > 0);
