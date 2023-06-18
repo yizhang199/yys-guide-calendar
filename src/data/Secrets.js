@@ -16,6 +16,12 @@ export const RewardType = {
   goldenSkins: '金蛇皮',
 };
 
+export const RewardFilters = [
+  { id: 1, value: [RewardType.ticket, RewardType.jades], name: '蓝票勾玉' },
+  { id: 2, value: [RewardType.fourStarWhiteDharma], name: '四星白蛋' },
+  { id: 3, value: [RewardType.blackDharma], name: '黑蛋' },
+];
+
 export const information = [
   {
     name: '山兔大暴走',

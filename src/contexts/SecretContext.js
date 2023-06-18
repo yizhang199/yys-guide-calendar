@@ -48,47 +48,38 @@ const SecretContextProvider = ({ children }) => {
     );
   };
 
-  const selectRewardTypes = (optionNumber) => {
-    switch (optionNumber) {
-      case 1:
-        setRewards([RewardType.ticket, RewardType.jades]);
-        break;
-
-      case 2:
-        setRewards([RewardType.fourStarWhiteDharma]);
-        break;
-      case 3:
-        setRewards([RewardType.blackDharma]);
-        break;
-      default:
-        break;
-    }
+  const selectRewardTypes = (value) => {
+    setRewards(value || []);
   };
+
+  const filteredSecrets = secrets.map((secret) => {
+    const blockedInstance = getBlockedInstance(secret.instances, heros);
+    const lastInstanceWithReward = getLastInstanceWithRewards(
+      secret.instances,
+      rewards
+    );
+
+    const maxLevel = Math.min(
+      blockedInstance?.level ? blockedInstance?.level - 1 : 10,
+      lastInstanceWithReward?.level || 0
+    );
+
+    return {
+      ...secret,
+      instances: secret.instances.map((instance) => ({
+        ...instance,
+        enable: instance.level <= maxLevel,
+      })),
+    };
+  });
 
   return (
     <SecretContext.Provider
       value={{
         toggleInstance,
-        secrets: secrets.map((secret) => {
-          const blockedInstance = getBlockedInstance(secret.instances, heros);
-          const lastInstanceWithReward = getLastInstanceWithRewards(
-            secret.instances,
-            rewards
-          );
-
-          const maxLevel = Math.min(
-            blockedInstance?.level ? blockedInstance?.level - 1 : 10,
-            lastInstanceWithReward?.level || 0
-          );
-
-          return {
-            ...secret,
-            instances: secret.instances.map((instance) => ({
-              ...instance,
-              enable: instance.level <= maxLevel,
-            })),
-          };
-        }),
+        selectRewardTypes,
+        selectedRewardTypes: rewards,
+        secrets: filteredSecrets,
       }}
     >
       {children}
@@ -117,6 +108,6 @@ function getBlockedInstance(instances, heros) {
 
 function getLastInstanceWithRewards(instances, rewards) {
   return instances.findLast(
-    (instance) => rewards.length === 0 || rewards.includes(instance.reward)
+    (instance) => rewards.length === 0 || rewards.includes(instance.rewardType)
   );
 }

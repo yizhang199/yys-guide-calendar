@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { useHeros } from 'contexts/HeroContext';
 import { useSecrets } from 'contexts/SecretContext';
-import { RewardType } from 'data/Secrets';
+import { RewardFilters } from 'data/Secrets';
 
 import styles from './Secrets.module.scss';
 
@@ -11,52 +11,11 @@ function Secrets() {
   const { name } = useParams();
 
   const { heros } = useHeros();
-  const { secrets } = useSecrets();
+  const { secrets, selectRewardTypes, selectedRewardTypes } = useSecrets();
 
-  const [selectedRewardTypes, setSelectedRewardTypes] = useState([
-    RewardType.jades,
-  ]);
-
-  const filteredData = secrets
-    // .map((data) => {
-    //   const blockedInstance = data.instances.find((instance) => {
-    //     if (!instance.requirements) return false;
-
-    //     return (
-    //       !instance.isDone &&
-    //       !instance.requirements.some((heroSet) =>
-    //         heroSet.every(
-    //           (hero) =>
-    //             heros
-    //               .filter((h) => h.obtained)
-    //               .findIndex((h) => h.id === hero.id) >= 0
-    //         )
-    //       )
-    //     );
-    //   });
-
-    //   const theLastInstanceHasSelectedReward = data.instances.findLast(
-    //     (instance) =>
-    //       selectedRewardTypes.length === 0 ||
-    //       (!instance.isDone &&
-    //         selectedRewardTypes?.includes(instance.rewardType))
-    //   );
-
-    //   const maxLevel = Math.min(
-    //     theLastInstanceHasSelectedReward?.level || 0,
-    //     blockedInstance?.level || 10
-    //   );
-
-    //   return {
-    //     ...data,
-    //     instances: data.instances.filter(
-    //       (instance) => instance.level <= maxLevel
-    //     ),
-    //   };
-    // })
-    .filter(
-      (data) => data?.instances.filter((i) => i.enable && !i.isDone).length > 0
-    );
+  const filteredData = secrets.filter(
+    (data) => data?.instances.filter((i) => i.enable && !i.isDone).length > 0
+  );
 
   const cx = classNames.bind(styles);
   const transitionContainerClasses = cx(
@@ -69,6 +28,42 @@ function Secrets() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.filterWrapper}>
+        {RewardFilters.map((rewardFilter) => {
+          const checked =
+            rewardFilter.value.length === selectedRewardTypes.length &&
+            selectedRewardTypes.every((selectRewardType) =>
+              rewardFilter.value.includes(selectRewardType)
+            );
+
+          const handleInputChecked = (evt) => {
+            if (evt.target.checked) {
+              selectRewardTypes(rewardFilter.value);
+            } else {
+              selectRewardTypes([]);
+            }
+          };
+          const filterButtonClasses = cx(
+            { active: checked },
+            styles.checkButton
+          );
+
+          return (
+            <label
+              key={`filter-${rewardFilter.id}`}
+              className={filterButtonClasses}
+            >
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={handleInputChecked}
+              />
+              <span>{rewardFilter.name}</span>
+            </label>
+          );
+        })}
+      </div>
+
       <div className={styles.grid}>
         {filteredData.map((data) => {
           return (
