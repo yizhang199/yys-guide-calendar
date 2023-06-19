@@ -1,5 +1,13 @@
 @import 'scss/_variables.scss';
 
+.wrapper {
+  display: flex;
+  height: max-content;
+  width: max-content;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .slide-button {
   position: relative;
   display: inline-block;

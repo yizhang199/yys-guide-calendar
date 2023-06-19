@@ -1,47 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import { useHeros } from 'contexts/HeroContext';
 import { useSecrets } from 'contexts/SecretContext';
 
 import styles from './Secret.module.scss';
+import SlideButton from 'components/SlideButton/SlideButton';
 
 function Secret() {
   const { name } = useParams();
 
   const { secrets, toggleInstance } = useSecrets();
 
+  const [showCompleted, setShowCompleted] = useState(false);
+  const [showDisabled, setShowDisabled] = useState(false);
+
   const { instances } = secrets.find((secret) => secret.name === name);
-
-  const { heros } = useHeros();
-
-  const blockedInstance = instances?.find((instance) => {
-    if (!instance.requirements) return false;
-
-    return (
-      !instance.isDone &&
-      !instance.requirements.some((heroSet) =>
-        heroSet.every(
-          (hero) =>
-            heros
-              .filter((h) => h.obtained)
-              .findIndex((h) => h.id === hero.id) >= 0
-        )
-      )
-    );
-  });
 
   const cx = classNames.bind(styles);
 
   const listClasses = cx(styles.instanceList);
 
+  const filteredInstance = instances.filter((instance) => {
+    return (
+      (showCompleted || (!showCompleted && !instance.isDone)) &&
+      (showDisabled || (instance.enable && !showDisabled))
+    );
+  });
+
+  const handleShowCompletedChange = (evt) => {
+    setShowCompleted(evt.target.checked);
+  };
+
+  const handleShowDisabledChange = (evt) => {
+    setShowDisabled(evt.target.checked);
+  };
+
   return (
     <div className={listClasses}>
-      <NavLink to="/secrets" className={styles.closeBtn}>
-        X
-      </NavLink>
-      {instances?.map((instance) => {
+      <div className={styles.header}>
+        <SlideButton
+          checked={showCompleted}
+          handleToggle={handleShowCompletedChange}
+          label="显示已完成"
+        />
+        <SlideButton
+          checked={showDisabled}
+          handleToggle={handleShowDisabledChange}
+          label="显示全部未完成"
+        />
+        <NavLink to="/secrets" className={styles.closeBtn}>
+          X
+        </NavLink>
+      </div>
+      {filteredInstance?.map((instance) => {
         return (
           <Instance
             instance={instance}
