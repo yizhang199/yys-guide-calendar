@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/yys-guide-calendar/static/css/main.765217d5.css",
-    "main.js": "/yys-guide-calendar/static/js/main.1ef030d2.js",
+    "main.css": "/yys-guide-calendar/static/css/main.d599666b.css",
+    "main.js": "/yys-guide-calendar/static/js/main.0965b733.js",
     "static/media/background.jpg": "/yys-guide-calendar/static/media/background.87557748201677c9453e.jpg",
     "static/media/uiw-font.svg": "/yys-guide-calendar/static/media/uiw-font.78f08c0f23dea465a157.svg",
     "static/media/uiw-font.eot": "/yys-guide-calendar/static/media/uiw-font.ad93b2547e56644f0d0a.eot",
@@ -9,11 +9,11 @@
     "static/media/uiw-font.woff": "/yys-guide-calendar/static/media/uiw-font.216b9443abbb4fb7512b.woff",
     "static/media/uiw-font.woff2": "/yys-guide-calendar/static/media/uiw-font.d63c18abcd00b357602e.woff2",
     "index.html": "/yys-guide-calendar/index.html",
-    "main.765217d5.css.map": "/yys-guide-calendar/static/css/main.765217d5.css.map",
-    "main.1ef030d2.js.map": "/yys-guide-calendar/static/js/main.1ef030d2.js.map"
+    "main.d599666b.css.map": "/yys-guide-calendar/static/css/main.d599666b.css.map",
+    "main.0965b733.js.map": "/yys-guide-calendar/static/js/main.0965b733.js.map"
   },
   "entrypoints": [
-    "static/css/main.765217d5.css",
-    "static/js/main.1ef030d2.js"
+    "static/css/main.d599666b.css",
+    "static/js/main.0965b733.js"
   ]
 }
