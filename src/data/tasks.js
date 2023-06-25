@@ -71,8 +71,37 @@ const Goals = {
   15: ['领最后一直送的SSR/SP,最终确定自己的斗技体系', '神龛兑换式神'],
 };
 
+export const Outlines = [
+  {
+    id: 1,
+    title:
+      '阴阳师等级31，加入同心队，方便早上起来的时候清理体力，晚上睡前也可以清理体力。',
+    plannedCompletionDay: 1,
+  },
+  {
+    id: 2,
+    title: '升级一只六星【姑获鸟】',
+    plannedCompletionDay: 1,
+  },
+  {
+    id: 3,
+    title: '买两套御魂【狂骨】和【雪幽魂】',
+    plannedCompletionDay: 1,
+  },
+  {
+    id: 4,
+    title: '【觉醒】和【御魂】副本前十层全通',
+    plannedCompletionDay: 1,
+  },
+  {
+    id: 4,
+    title: '尽量多的完成【秘闻副本】',
+    plannedCompletionDay: 1,
+  },
+];
+
 // those tasks are one time task, it will be used to create the agenda for the first two weeks calendar guide
-export const tasks = [
+export const OneTimeTasks = [
   {
     id: 1,
     title: '先跟着系统提示跑新手教程,完成以后会弹出跳过剧情对话框,点击跳过剧情',
@@ -267,73 +296,95 @@ export const tasks = [
   },
 ];
 
-export const tasksByDay = {
-  1: {
-    goals: Goals[1],
-    tasks: tasks[1],
-  },
-  2: {
-    goals: Goals[2],
-    tasks: [],
-  },
-  3: {
-    intro: '建议44级',
-    goals: Goals[3],
-  },
-  4: {
-    intro: '建议45级',
-    goals: Goals[4],
-  },
-  5: {
-    intro: '建议45级',
-    goals: Goals[5],
-  },
-  6: {
-    intro: '新一周爽领勾玉',
-    goals: Goals[6],
-  },
-  7: {
-    intro: '开奖日',
-    goals: Goals[7],
-  },
-  8: {
-    intro: '一次性奖励除了部分成就和奇谭应该都搞定了,开始清理奇谭',
-    goals: Goals[8],
-  },
-  9: {
-    intro: '一次性奖励除了部分成就和奇谭应该都搞定了,开始清理奇谭',
-    goals: Goals[9],
-  },
-  10: {
-    intro: '一次性奖励除了部分成就和奇谭应该都搞定了,开始清理奇谭',
-    goals: Goals[10],
-  },
-  11: {
-    intro: '建议54级,最好60级',
-    goals: Goals[11],
-  },
-  12: {
-    intro: '建议54级,最好60级',
-    goals: Goals[12],
-  },
-  13: {
-    intro: '新区活动结束,回归正常游戏节奏',
-    goals: Goals[13],
-  },
-  14: {
-    intro: '新区活动结束,回归正常游戏节奏',
-    goals: Goals[14],
-  },
-  15: {
-    intro: '修行羁旅开启,开始修行任务',
-    goals: Goals[15],
-  },
-};
-
 // need to be completed every day
 // localStorage record structure: dailyTaskCompleteDateTime: {[id:number]:{ completedAt:'xxx', dueAt:'xxx', startAt: 'xxx'}}
-export const dailyTasks = [];
+export const DailyTasks = [
+  { id: 1, title: '签到', startAt: [0], dueAt: [23, 59, 59] },
+  { id: 2, title: '礼包屋-黑蛋碎片', startAt: [0], dueAt: [23, 59, 59] },
+  { id: 3, title: '每日免费抽卡', startAt: [0], dueAt: [23, 59, 59] },
+  { id: 4, title: '地狱鬼王', startAt: [6], dueAt: [23, 59, 59] },
+  {
+    id: 5,
+    title: '好友赠送友情点，好友界面祝福可以有些奖励',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  { id: 6, title: '阴阳寮-领取寮资金', startAt: [0], dueAt: [23, 59, 59] },
+  {
+    id: 7,
+    title: '阴阳寮-祈愿发布和赠送碎片',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  { id: 8, title: '阴阳寮-寮30', startAt: [0], dueAt: [23, 59, 59] },
+  { id: 9, title: '阴阳寮-道馆', startAt: [19], dueAt: [23, 59, 59] },
+  {
+    id: 10,
+    title: '宠物-喂食,一次御魂本拿奖励',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  { id: 11, title: '悬赏任务-早', startAt: [5], dueAt: [17, 59, 59] },
+  { id: 12, title: '悬赏任务-晚', startAt: [18], dueAt: [4, 59, 59] },
+  {
+    id: 13,
+    title: '金币、经验妖怪(12am、12pm各加一次挑战次数)',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  {
+    id: 14,
+    title: '守护历练:每天5次师徒一起',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  {
+    id: 15,
+    title: '花合战100点每日做满有勾玉',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  {
+    id: 16,
+    title: '开3个小号做协战50拿勾玉',
+    startAt: [0],
+    dueAt: [23, 59, 59],
+  },
+  {
+    id: 17,
+    title: '逢魔之时',
+    startAt: [17],
+    dueAt: [21, 59, 59],
+  },
+  {
+    id: 18,
+    title: '阴阳寮-讨伐战',
+    description:
+      '周一到周四是麒麟，手快有手慢无。周五到周日阴界之门自己打自己的。',
+    startAt: [19],
+    dueAt: [20, 59, 59],
+  },
+];
 
 // need to be completed every week
 // localStorage record structure: weeklyTaskCompleteDateTime: {[id:number]:{ completedAt:'xxx', dueAt:'xxx', startAt: 'xxx'}}
-export const weeklyTasks = [];
+export const WeeklyTasks = [
+  { id: 1, title: '分享图鉴' },
+  { id: 2, title: '分享地域鬼王' },
+  { id: 3, title: '秘卷屋换30个6星御魂' },
+  { id: 4, title: '荣誉-黑碎,蓝票' },
+  { id: 5, title: '勋章-黑蛋,蓝票,体力' },
+  { id: 6, title: '魅力-黑碎,蓝票' },
+  { id: 7, title: '寮商店' },
+  { id: 8, title: '千物宝库' },
+  { id: 9, title: '秘闻竞速或百战368勾玉必做' },
+  { id: 10, title: '分享秘闻竞速' },
+  { id: 11, title: '斗技' },
+  { id: 12, title: '协同斗技' },
+  { id: 13, title: '百鬼弈' },
+  { id: 14, title: '日轮-周一到周五50次加成' },
+  { id: 15, title: '日轮-周六50次加成' },
+  { id: 16, title: '日轮-周日50次加成' },
+  { id: 17, title: '真蛇-I' },
+  { id: 18, title: '真蛇-II' },
+];

@@ -2,7 +2,8 @@ import { useState, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './App.module.scss';
 import Guides from './data/guides.json';
-import DayCell from './components/DayCell/DayCell';
+// import DayCell from './components/DayCell/DayCell';
+import TaskList from 'components/TaskList/TaskList';
 
 const dateString = '24 May, 2023, 00:00:00';
 
@@ -73,7 +74,8 @@ function App() {
           );
         })}
       </div>
-      <DayCell data={Guides[activeDay]} day={activeDay} />
+      {/* <DayCell data={Guides[activeDay]} day={activeDay} /> */}
+      <TaskList />
     </div>
   );
 }

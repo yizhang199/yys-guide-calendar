@@ -9,6 +9,7 @@ import Secrets from 'pages/Secrets/Secrets';
 import Layout from 'components/Layout/Layout';
 import HeroContextProvider from 'contexts/HeroContext';
 import SecretContextProvider from 'contexts/SecretContext';
+import TaskContextProvider from 'contexts/TaskContext';
 
 import './index.scss';
 
@@ -48,10 +49,12 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HeroContextProvider>
-      <SecretContextProvider>
-        <RouterProvider router={router} />
-      </SecretContextProvider>
-    </HeroContextProvider>
+    <TaskContextProvider>
+      <HeroContextProvider>
+        <SecretContextProvider>
+          <RouterProvider router={router} />
+        </SecretContextProvider>
+      </HeroContextProvider>
+    </TaskContextProvider>
   </React.StrictMode>
 );
