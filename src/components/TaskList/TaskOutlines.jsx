@@ -1,13 +1,13 @@
 import React from 'react';
 
-function TaskOutlines({ outlines }) {
-  if (!outlines || outlines.length <= 0) return null;
+function TaskOutlines({ outline }) {
+  if (!outline) return null;
+
+  const { note } = outline;
 
   return (
     <div>
-      {outlines.map((outline) => (
-        <div key={outline}>{outline.title}</div>
-      ))}
+      <div>{note}</div>
     </div>
   );
 }

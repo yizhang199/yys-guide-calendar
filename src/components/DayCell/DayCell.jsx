@@ -2,15 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './DayCell.module.scss';
 
-const dateString = '24 May, 2023, 00:00:00';
+// const dateString = '24 May, 2023, 00:00:00';
 
 function DayCell({ data, day }) {
   if (!data) return null;
 
   const { goals } = data;
 
-  const startDate = new Date(Date.parse(dateString));
-  startDate.setDate(startDate.getDate() + day - 1);
+  // const startDate = new Date(Date.parse(dateString));
+  // startDate.setDate(startDate.getDate() + day - 1);
 
   return (
     <div className={styles.dayCell}>
