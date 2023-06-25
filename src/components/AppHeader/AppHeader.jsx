@@ -12,7 +12,7 @@ const navButtons = [
 
 function AppHeader() {
   return (
-    <Card className={styles.appHeader}>
+    <div className={styles.appHeader}>
       {navButtons.map((nav) => (
         <NavLink
           key={nav.label}
@@ -23,11 +23,11 @@ function AppHeader() {
           }
           to={nav.to}
         >
-          <i className="icons">gouyu</i>
+          {/* <i className="icons">gouyu</i> */}
           <span>{nav.label}</span>
         </NavLink>
       ))}
-    </Card>
+    </div>
   );
 }
 
