@@ -13,8 +13,8 @@ function TaskList({ day }) {
           (outline) => outline.plannedCompletionDay === day
         )}
       />
-      <TaskGroup tasks={filterTaskByDay(dailyTasks, day)} type="daily" />
-      <TaskGroup tasks={filterTaskByDay(weeklyTasks, day)} type="weekly" />
+      <TaskGroup tasks={dailyTasks} type="daily" />
+      <TaskGroup tasks={weeklyTasks} type="weekly" />
       <TaskGroup tasks={filterTaskByDay(oneTimeTasks, day)} type="one-time" />
     </div>
   );
@@ -23,5 +23,5 @@ function TaskList({ day }) {
 export default TaskList;
 
 function filterTaskByDay(tasks, day) {
-  return tasks?.filter((task) => tasks.plannedCompletionDay <= day);
+  return tasks?.filter((task) => task.plannedCompletionDay <= day);
 }

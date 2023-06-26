@@ -4,35 +4,96 @@ import store from 'store2';
 
 export const TaskContext = createContext();
 
-const getInitialTasks = () => {
-  // const heroIds = store.get('tasks');
-  // const herosArr = Object.values(Tasks);
-  // if (!Array.isArray(heroIds))
-  //   return herosArr.map((hero) => ({ ...hero, obtained: false }));
-  // return herosArr.map((hero) => ({
-  //   ...hero,
-  //   obtained: heroIds.includes(hero.id),
-  // }));
+// dailyTaskById - {[taskId:number]: {completedAt: xxxx}}
+const getInitialDailyTasks = () => {
+  const dailyTaskById = store.get('daily-tasks');
+
+  const result = DailyTasks.map((task) => {
+    const taskRecord = dailyTaskById && dailyTaskById[task.id];
+
+    if (!taskRecord || !taskRecord.completedAt)
+      return { ...task, isDone: false };
+
+    const now = new Date();
+    const today = new Date(now.toDateString());
+    const completedDay = new Date(taskRecord.completedAt);
+
+    console.log(completedDay, today);
+
+    return {
+      ...task,
+      isDone: today - completedDay <= 0,
+    };
+  });
+
+  console.log(result);
+
+  return result;
 };
 
 const TaskContextProvider = (props) => {
-  // const [tasks, setTasks] = useState(getInitialTasks);
+  const [dailyTasks, setDailyTasks] = useState(getInitialDailyTasks);
 
   // dailyTasks, weeklyTasks, oneTimeTasks, outlines
-  const dailyTasks = DailyTasks;
   const weeklyTasks = WeeklyTasks;
   const oneTimeTasks = OneTimeTasks;
   const outlines = Outlines;
 
-  // useEffect(() => {
-  // update task isDone status in localStorage.
-  // store.set(
-  //   'tasks',
-  //   tasks.filter((task) => task.isDone).map((task) => task.id)
-  // );
-  // }, [tasks]);
+  useEffect(() => {
+    const dailyTaskById = store.get('daily-tasks');
 
-  const completeTask = (taskId) => {};
+    const updatedTaskById = dailyTasks.reduce((result, task) => {
+      const now = new Date();
+      const today = new Date(now.toDateString());
+
+      // task hasn't been completed - don't save it in local storage
+      if (!task.isDone) return result;
+
+      // task has been done today - keep the record in local storage
+      const alreadyDoneOnToday =
+        dailyTaskById &&
+        dailyTaskById[task.id] &&
+        dailyTaskById[task.id].completeAt &&
+        today - new Date(dailyTaskById[task.id].completedAt) === 0;
+      if (alreadyDoneOnToday)
+        return {
+          ...result,
+          [task.id]: {
+            id: task.id,
+            completedAt: dailyTaskById[task.id].completedAt,
+          },
+        };
+
+      // task just finished - update the record in local storage
+      return {
+        ...result,
+        [task.id]: { id: task.id, completedAt: now.toDateString() },
+      };
+    }, {});
+
+    console.log(updatedTaskById);
+
+    store.set('daily-tasks', updatedTaskById);
+  }, [dailyTasks]);
+
+  const completeTask = (taskId, type) => {
+    switch (type) {
+      case 'daily':
+        setDailyTasks(
+          dailyTasks.map((task) => {
+            if (task.id === taskId) return { ...task, isDone: true };
+            return task;
+          })
+        );
+        break;
+      case 'weekly':
+        break;
+      case 'one-time':
+        break;
+      default:
+        break;
+    }
+  };
 
   const undoCompleteTask = (taskId) => {};
 
